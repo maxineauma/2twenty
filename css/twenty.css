@@ -1,9 +1,7 @@
 .twenty-title {
-    color: #fcedd8;
     text-shadow: 3px 3px 0px #eb452b, 
     6px 6px 0px #efa032, 
-    9px 9px 0px #46b59b, 
-    12px 12px 0px #017e7f, 
-    15px 15px 0px #052939;
-    margin:15px;
+    9px 9px 0px #017e7f;
+    font-weight:bold;
+    color:black;
 }
