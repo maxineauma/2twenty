@@ -23,3 +23,6 @@
         </div>
     </div>
 </nav>
+
+<!-- Loading screen -->
+<div class="pageloader is-right-to-left is-active"><span class="title">Loading your content...</span></div>

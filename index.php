@@ -17,9 +17,9 @@
                     <h2 class="subtitle">
                         Find things you love. Become an independent seller. All right here.
                     </h2>
-                    <form class="field">
+                    <form class="field" action="search.php" method="POST">
                         <div class="control">
-                            <input class="input is-rounded" type="text" placeholder="Search for sellers and items">
+                            <input class="input is-rounded" type="text" name="desc" placeholder="Search for sellers and items">
                         </div>
                     </form>
                     <button class="button mt-4 is-rounded is-primary is-outlined is-inverted" id="more">
