@@ -1,57 +1,12 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Test</title>
-        <link rel="stylesheet" href="css/bulma.css">
-        <link rel="stylesheet" href="css/twenty.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $(".navbar-burger").click(function() {
-                    $(".navbar-burger").toggleClass("is-active");
-                    $(".navbar-menu").toggleClass("is-active");
-                });
-
-                $("#more").click(function() {
-                    $("body,html").animate({
-                        scrollTop: $("#body").offset().top
-                    }, 300);
-                });
-            });
-        </script>
-    </head>
+    <?php 
+        include("header.php");
+        include("navbar.php");
+    ?>
 
     <body>
-
-        <nav class="navbar is-white" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item">
-                    <span class='twenty-title'>2Twenty</span>
-                </a>
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-
-            <div class="navbar-menu">
-                <div class="navbar-end">
-                    <a class="navbar-item">Home</a>
-                    <a class="navbar-item">About</a>
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button is-primary is-rounded is-outlined"><b>Sign up</b></a>
-                            <a class="button is-danger is-rounded is-outlined">Log in</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
 
         <section class="hero is-primary is-fullheight is-bold">
             <div class="hero-body">
@@ -131,16 +86,9 @@
             </div>
         </section>
 
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <p>
-                    <br/>
-                    <b>2Twenty</b> Shop<br/>
-                    Powered by <a href="https://bulma.io">Bulma</a> and a lot of ☕.<br/>
-                    The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-                </p>   
-            </div>
-        </footer>
+        <?php
+            include("footer.php");
+        ?>
 
     </body>
 
