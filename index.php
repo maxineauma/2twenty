@@ -2,8 +2,8 @@
 <html>
 
     <?php 
-        include("header.php");
-        include("navbar.php");
+        include("vars/header.php");
+        include("vars/navbar.php");
     ?>
 
     <body>
@@ -87,7 +87,7 @@
         </section>
 
         <?php
-            include("footer.php");
+            include("vars/footer.php");
         ?>
 
     </body>
