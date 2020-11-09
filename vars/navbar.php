@@ -23,3 +23,13 @@
         </div>
     </div>
 </nav>
+<!--
+<div class="tabs is-centered is-fullwidth">
+  <ul>
+    <li><a>Clothes</a></li>
+    <li><a>Entertainment</a></li>
+    <li><a>Hand-made</a></li>
+    <li><a>Used</a></li>
+  </ul>
+</div>
+-->
