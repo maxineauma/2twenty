@@ -31,7 +31,7 @@
                                 foreach($results as &$item) {
                                     $title = $item[1];
                                     $image_url = $item[2];
-                                    $tags = explode(",", $item[3]);
+                                    $tags = explode(", ",$item[3]);
                                     $desc = $item[4];
                                     $seller = $item[5];
                                     $price = $item[6];
@@ -55,7 +55,7 @@
                                     ');
                 
                                                         foreach($tags as &$tag) {
-                                                            echo(' <div class="tag is-danger">'.$tag.'</div> ');
+                                                            echo(' <a href="search.php?desc='.$tag.'"><div class="tag is-danger">'.$tag.'</div></a> ');
                                                         }
 
                                     echo('
