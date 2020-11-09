@@ -1,7 +1,7 @@
 <nav class="navbar is-white" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <div class="navbar-item">
-            <span class='twenty-title'>2Twenty</span>
+            <a href='index.php'><span class='twenty-title'>2Twenty</span></a>
         </div>
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
             <span aria-hidden="true"></span>
@@ -12,7 +12,7 @@
 
     <div class="navbar-menu">
         <div class="navbar-end">
-            <a class="navbar-item">Home</a>
+            <a class="navbar-item" href="index.php">Home</a>
             <a class="navbar-item">About</a>
             <div class="navbar-item">
                 <div class="buttons">
@@ -23,6 +23,3 @@
         </div>
     </div>
 </nav>
-
-<!-- Loading screen -->
-<div class="pageloader is-active"><span class="title">Loading your content...</span></div>
