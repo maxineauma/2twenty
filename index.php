@@ -20,7 +20,7 @@
                         <h2 class="subtitle has-text-light">
                             Find things you love. Become an independent seller. All right here.
                         </h2>
-                    <form class="field" action="search.php" method="POST" autocomplete="off">
+                    <form class="field" action="search.php" method="GET" autocomplete="off">
                         <div class="control">
                             <input class="input is-rounded" type="text" name="desc" placeholder="Search for sellers and items">
                         </div>

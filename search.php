@@ -6,8 +6,8 @@
         include("vars/navbar.php");
         include("src/search.php");
 
-        if($_POST['desc']) {
-            $results = (search_store($_POST['desc']));
+        if($_GET['desc']) {
+            $results = (search_store($_GET['desc']));
         } else {
             header("Location: index.php");
         }
@@ -17,10 +17,10 @@
 
         <section class="section" id="body">
             <div class="container">
-                <h1 class="title">Searching for "<?php echo $_POST['desc']; ?>"...</h1>
-                <form class="field" action="search.php" method="POST">
+                <h1 class="title">Searching for "<?php echo $_GET['desc']; ?>"...</h1>
+                <form class="field" action="search.php" method="GET">
                     <div class="control">
-                        <input class="input is-rounded" type="text" name="desc" value="<?php echo $_POST['desc']; ?>">
+                        <input class="input is-rounded" type="text" name="desc" value="<?php echo $_GET['desc']; ?>">
                     </div>
                 </form>
                 <br/>
