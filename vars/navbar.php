@@ -71,7 +71,7 @@
                         echo('
                         <div class="navbar-item">Welcome back, <strong class="ml-1">'.$_SESSION["username"].'</strong>!</div>
                         <div class="buttons">
-                            <form class="field" method="POST">
+                            <form class="field" method="POST" action="index.php">
                                 <input type="submit" name="logout" class="button is-danger is-rounded is-outlined" value="Logout">
                             </form>
                         </div>
