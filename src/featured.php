@@ -4,6 +4,7 @@
 
         $sql = "SELECT id FROM `featured`;";
 
+        // get featured ids from featured table
         $query = $conn->query($sql);
         while($row = $query->fetch_all()) {
             return $row;
@@ -14,7 +15,8 @@
         include("db_connect.php");
 
         $final = [];
-        $sql = "";
+        
+        // match returned ids with ids from items_for_sale table
         $results = get_featured();
 
         foreach($results as &$item) { 

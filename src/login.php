@@ -29,8 +29,6 @@
                 return 0; // wrong password
             }
 
-
-
         } else {
             return 0; // wrong username;
         }

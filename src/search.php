@@ -2,6 +2,8 @@
     function search_store($desc) {
         include("db_connect.php");
 
+        // search by tags, title, description, seller
+        // sorted by relevance to title of item
         $sql = "SELECT * FROM `items_for_sale` WHERE tags LIKE CONCAT('%',?,'%') ";
         $sql .= "OR title LIKE CONCAT('%',?,'%') ";
         $sql .= "OR description LIKE CONCAT('%',?,'%') ";
