@@ -8,6 +8,11 @@
     font-weight:bold;
     color:#333;
 }
-.twenty-white {
-    color:#F5F5F5;
+.twenty-white { color:#F5F5F5; }
+.floating {
+    position:absolute;
+    top:10vh;
+    left:5vw;
 }
+#good-login, #bad-login { z-index:999; }
+#good-login:hover, #bad-login:hover { cursor:move; }
