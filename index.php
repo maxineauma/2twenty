@@ -42,9 +42,9 @@
                 <div class="columns">
                     <?php 
                         foreach($featured as &$item) {
-                            $title = $item[0][1];
-                            $image_url = $item[0][2];
-                            $seller = $item[0][5];
+                            $title = $item[1];
+                            $image_url = $item[2];
+                            $seller = $item[5];
 
                             echo('
                             <div class="column is-4">
