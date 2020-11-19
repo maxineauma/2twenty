@@ -20,13 +20,13 @@
                 <hr/>
                 <p class='regular'>
                     This is a very simple install script. There's only one step necessary!<br/>
-                    Here, all you have to do is set up an administrator account and specify your SQL server's hostname + login.<br/>
+                    Here, all you have to do is set up an administrator account and specify your MySQL server's hostname + login.<br/>
                     The rest of the leg work will be handled for you. Make sure it's secure!
-                    <br/><b>Note</b>: The database name and tables are pre-determined. Everything can be found in <code>store</code>.
+                    <br/><b>Note</b>: The database name and tables are pre-determined. MySQL is <i>required</i>.
                 </p>
                 <form method="POST" action="src/db_setup.php">
 
-                    <h2 class='header'>Set up SQL access</h2>
+                    <h2 class='header'>Set up MySQL access</h2>
                     <label for='hostname'>Database hostname</label>
                     <input type='text' name='sql_hostname' placeholder='my.database.net:1433'>
                     <label for='hostname'>SQL username</label>
