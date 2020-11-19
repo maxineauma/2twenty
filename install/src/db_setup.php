@@ -7,9 +7,9 @@
     $us = $_POST['username'];
     $pw = $_POST['password'];
 
-    if(empty($db_ho)) echo("Error. Please enter a valid hostname.<br/>");
-    if(empty($db_us) || empty($db_pw)) echo("Error. Please enter a SQL username and/or password.<br/>");
-    if(empty($us) || empty($pw)) echo("Error. Please enter a username and/or password.<br/>");
+    if(empty($db_ho)) die("Error. Please enter a valid hostname.<br/>");
+    if(empty($db_us) || empty($db_pw)) die("Error. Please enter a SQL username and/or password.<br/>");
+    if(empty($us) || empty($pw)) die("Error. Please enter a username and/or password.<br/>");
 
     $conn = new mysqli($db_ho, $db_us, $db_pw);
     if($conn -> connect_error) die("<br/>Failed to connect to SQL server.");
