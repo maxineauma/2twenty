@@ -18,7 +18,7 @@
         // Database setup:
         $sql = "CREATE DATABASE IF NOT EXISTS store;";
         $db_query = $conn->prepare($sql);
-        $db_query->execute();
+        $db_query->execute() or die("<br/>Failed to create database <i>store</i>.");
         echo("<b>Created database <i>store</i>...</b><br/>");
 
         /* ************************************************************** */
@@ -28,7 +28,7 @@
         $sql = "CREATE TABLE IF NOT EXISTS store.featured";
         $sql .= "(id INT(255) NOT NULL);";
         $tbl_query = $conn->prepare($sql);
-        $tbl_query->execute(); 
+        $tbl_query->execute() or die("<br/>Failed to create table <i>featured</i>."); 
         echo("<b>Created table <i>featured</i>...</b><br/>");
 
         // user:
@@ -38,7 +38,7 @@
         $sql .= "    mod_priv TINYINT(1) NOT NULL,";
         $sql .= "    admin_priv TINYINT(1) NOT NULL);";
         $tbl_query = $conn->prepare($sql);
-        $tbl_query->execute(); 
+        $tbl_query->execute() or die("<br/>Failed to create table <i>user</i>."); 
         echo("<b>Created table <i>user</i>...</b><br/>");
 
         // items_for_sale:
@@ -49,7 +49,7 @@
         $sql .= "    seller TEXT NULL, price DOUBLE NULL,";
         $sql .= "    PRIMARY KEY (id) );";
         $tbl_query = $conn->prepare($sql);
-        $tbl_query->execute();
+        $tbl_query->execute() or die("<br/>Failed to create table <i>items_for_sale</i>.");
         echo("<b>Created table <i>items_for_sale</i>...</b><br/>");
 
         /* ************************************************************** */
@@ -59,7 +59,7 @@
         $sql = "INSERT IGNORE INTO store.user";
         $sql .= " VALUES('".$us."', md5('".$pw."'), 1, 1);";
         $rec_query = $conn->prepare($sql);
-        $rec_query->execute();
+        $rec_query->execute() or die("<br/>Failed to create record in <i>user</i>.");
         echo("<b>Created administrator <i>".$us."</i>...</b><br/>");
 
         // dummy item:
@@ -67,18 +67,18 @@
         $sql .= " VALUES('Sample Shoes', 'https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-2_large.png?format=jpg&quality=90&v=1530129318',";
         $sql .= "        'clothing, shoes', 'Sample shoes.', 'sampleShop', 59.99);";
         $rec_query = $conn->prepare($sql);
-        $rec_query->execute();
+        $rec_query->execute() or die("<br/>Failed to create record in <i>items_for_sale</i>.");
 
         // featured sample item:
         $sql = "INSERT IGNORE INTO store.featured VALUES(1);";
         $rec_query  = $conn->prepare($sql);
-        $rec_query->execute();
+        $rec_query->execute() or die("<br/>Failed to create record.");
         echo("<b>Created sample item...</b><br/>");
 
         /* ************************************************************** */
 
         // Configuration setup:
-        $fh = fopen("../../src/db_connect.php", 'w') or die("Unable to create configuration file.<br/>");
+        $fh = fopen("../../src/db_connect.php", 'w') or die("<br/>Unable to create configuration file.");
         $config = '<?php '; 
         $config .= '$server = "'.$db_ho.'";';
         $config .= '$user = "'.$db_us.'";';
