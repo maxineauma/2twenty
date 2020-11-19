@@ -15,7 +15,7 @@
                 <h1 class='header'>Incredibly Reasonable Installer Script (IRIS)</h1>
                 <p class='regular'>
                     Hello! If you've found yourself here, it's because you haven't installed the program properly or at all.<br/>
-                    <b>Note</b>: If you have, don't forget to delete the <code>/install</code> directory!
+                    <b>Note</b>: If you haven't, don't forget to delete the <code>/install</code> directory!
                 </p>
                 <hr/>
                 <p class='regular'>

@@ -21,6 +21,8 @@
         $db_query->execute();
         echo("<b>Created database <i>store</i>...</b><br/>");
 
+        /* ************************************************************** */
+
         // Table setup:
         // featured:
         $sql = "CREATE TABLE IF NOT EXISTS store.featured";
@@ -50,13 +52,30 @@
         $tbl_query->execute();
         echo("<b>Created table <i>items_for_sale</i>...</b><br/>");
 
+        /* ************************************************************** */
+
         // Records setup:
         // admin account:
-        $sql = "INSERT INTO store.user";
+        $sql = "INSERT IGNORE INTO store.user";
         $sql .= " VALUES('".$us."', md5('".$pw."'), 1, 1);";
         $rec_query = $conn->prepare($sql);
         $rec_query->execute();
         echo("<b>Created administrator <i>".$us."</i>...</b><br/>");
+
+        // dummy item:
+        $sql = "INSERT IGNORE INTO store.items_for_sale(title, image_url, tags, description, seller, price)";
+        $sql .= " VALUES('Sample Shoes', 'https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-2_large.png?format=jpg&quality=90&v=1530129318',";
+        $sql .= "        'clothing, shoes', 'Sample shoes.', 'sampleShop', 59.99);";
+        $rec_query = $conn->prepare($sql);
+        $rec_query->execute();
+
+        // featured sample item:
+        $sql = "INSERT IGNORE INTO store.featured VALUES(1);";
+        $rec_query  = $conn->prepare($sql);
+        $rec_query->execute();
+        echo("<b>Created sample item...</b><br/>");
+
+        /* ************************************************************** */
 
         // Configuration setup:
         $fh = fopen("../../src/db_connect.php", 'w') or die("Unable to create configuration file.<br/>");
@@ -69,6 +88,9 @@
         $config .= 'if($conn -> connect_error) die("Failed to connect."); ?>';
         fwrite($fh, $config);
         fclose($fh);
+        echo("<b>Created configuration...</b><br/>");
+
+        /* ************************************************************** */
 
         echo("Installation over. Please delete the <code>/install</code> directory.");
 
