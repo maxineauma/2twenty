@@ -8,11 +8,11 @@ $us = $_POST['username'];
 $pw = $_POST['password'];
 
 if (empty($db_ho)) die("Error. Please enter a valid hostname.<br/>");
-if (empty($db_us) || empty($db_pw)) die("Error. Please enter a SQL username and/or password.<br/>");
+if (empty($db_us)) die("Error. Please enter a SQL username.<br/>");
 if (empty($us) || empty($pw)) die("Error. Please enter a username and/or password.<br/>");
 
 $conn = new mysqli($db_ho, $db_us, $db_pw);
-if ($conn->connect_error) die("<br/>Failed to connect to SQL server.");
+if ($conn->connect_error) die("<br/>".$conn->connect_error);
 else
 {
 
