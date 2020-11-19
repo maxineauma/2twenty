@@ -42,10 +42,12 @@
 
         // Table: user
         $sql = "CREATE TABLE IF NOT EXISTS store.user";
-        $sql .= "   (user TEXT NOT NULL,";
+        $sql .= "    (id INT(255) NOT NULL AUTO_INCREMENT,";
+        $sql .= "    user TEXT NOT NULL,";
         $sql .= "    pass VARCHAR(255) NOT NULL,";
         $sql .= "    mod_priv TINYINT(1) NOT NULL,";
-        $sql .= "    admin_priv TINYINT(1) NOT NULL);";
+        $sql .= "    admin_priv TINYINT(1) NOT NULL,";
+        $sql .= "    PRIMARY KEY(id) );";
 
         $tbl_query = $conn->prepare($sql);
         $tbl_query->execute() or die("<br/>Failed to create table <i>user</i>."); 
@@ -70,7 +72,7 @@
         /* ************************************************************** */
 
         // Record: admin account
-        $sql = "REPLACE INTO store.user";
+        $sql = "REPLACE INTO store.user(user, pass, mod_priv, admin_priv)";
         $sql .= " VALUES(?, md5(?), 1, 1);";
 
         $rec_query = $conn->prepare($sql);
