@@ -71,7 +71,7 @@
 
         // Record: admin account
         $sql = "INSERT IGNORE INTO store.user";
-        $sql .= " VALUES('?', md5('?'), 1, 1);";
+        $sql .= " VALUES(?, md5(?), 1, 1);";
 
         $rec_query = $conn->prepare($sql);
         $rec_query->bind_param('ss', $u, $p); 
@@ -105,13 +105,13 @@
         // Configuration setup:
         $fh = fopen("../../src/db_connect.php", 'w') or die("<br/>Unable to create configuration file.");
 
-        $config = '<?php '; 
-        $config .= '$server = "'.$db_ho.'";';
-        $config .= '$user = "'.$db_us.'";';
-        $config .= '$password = "'.$db_pw.'";';
-        $config .= '$db = "store";';
-        $config .= '$conn = new mysqli($server, $user, $password, $db);';
-        $config .= 'if($conn -> connect_error) die("Failed to connect."); ?>';
+        $config = '<?php ' . PHP_EOL; 
+        $config .= '$server = "'.$db_ho.'";' . PHP_EOL;
+        $config .= '$user = "'.$db_us.'";' . PHP_EOL;
+        $config .= '$password = "'.$db_pw.'";' . PHP_EOL;
+        $config .= '$db = "store";' . PHP_EOL;
+        $config .= '$conn = new mysqli($server, $user, $password, $db);' . PHP_EOL;
+        $config .= 'if($conn -> connect_error) die("Failed to connect.");  '. PHP_EOL .' ?>';
 
         fwrite($fh, $config);
         fclose($fh);
