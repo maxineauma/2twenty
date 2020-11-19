@@ -70,7 +70,7 @@
         /* ************************************************************** */
 
         // Record: admin account
-        $sql = "INSERT IGNORE INTO store.user";
+        $sql = "REPLACE INTO store.user";
         $sql .= " VALUES(?, md5(?), 1, 1);";
 
         $rec_query = $conn->prepare($sql);
@@ -83,7 +83,7 @@
         /* ************************************************************** */
 
         // Record: dummy item
-        $sql = "INSERT IGNORE INTO store.items_for_sale(title, image_url, tags, description, seller, price)";
+        $sql = "REPLACE INTO store.items_for_sale(title, image_url, tags, description, seller, price)";
         $sql .= " VALUES('Sample Shoes', 'https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-2_large.png?format=jpg&quality=90&v=1530129318',";
         $sql .= "        'clothing, shoes', 'Sample shoes.', 'sampleShop', 59.99);";
 
@@ -93,7 +93,7 @@
         /* ************************************************************** */
 
         // Record: dummy item featured
-        $sql = "INSERT IGNORE INTO store.featured VALUES(1);";
+        $sql = "REPLACE INTO store.featured VALUES(1);";
 
         $rec_query  = $conn->prepare($sql);
         $rec_query->execute() or die("<br/>Failed to create record.");
@@ -106,12 +106,12 @@
         $fh = fopen("../../src/db_connect.php", 'w') or die("<br/>Unable to create configuration file.");
 
         $config = '<?php ' . PHP_EOL; 
-        $config .= '$server = "'.$db_ho.'";' . PHP_EOL;
-        $config .= '$user = "'.$db_us.'";' . PHP_EOL;
-        $config .= '$password = "'.$db_pw.'";' . PHP_EOL;
-        $config .= '$db = "store";' . PHP_EOL;
-        $config .= '$conn = new mysqli($server, $user, $password, $db);' . PHP_EOL;
-        $config .= 'if($conn -> connect_error) die("Failed to connect.");  '. PHP_EOL .' ?>';
+        $config .= '    $server = "'.$db_ho.'";' . PHP_EOL;
+        $config .= '    $user = "'.$db_us.'";' . PHP_EOL;
+        $config .= '    $password = "'.$db_pw.'";' . PHP_EOL;
+        $config .= '    $db = "store";' . PHP_EOL;
+        $config .= '    $conn = new mysqli($server, $user, $password, $db);' . PHP_EOL;
+        $config .= '    if($conn -> connect_error) die("Failed to connect.");  '. PHP_EOL .'?>';
 
         fwrite($fh, $config);
         fclose($fh);
