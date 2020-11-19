@@ -42,25 +42,15 @@
     }
 
 ?>
-
-<nav class="navbar is-white" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <div class="navbar-item">
-            <a href='index.php'><span class='twenty-title'>2Twenty</span></a>
-        </div>
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-    </div>
-
-    <div class="navbar-menu">
-        <div class="navbar-end">
-            <a class="navbar-item" href="index.php">Home</a>
-            <a class="navbar-item">About</a>
-            <div class="navbar-item">
-                <?php
+	<nav class="navbar is-white" role="navigation" aria-label="main navigation">
+		<div class="navbar-brand">
+			<div class="navbar-item"> <a href='index.php'><span class='twenty-title'>2Twenty</span></a> </div>
+			<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"> <span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>
+		</div>
+		<div class="navbar-menu">
+			<div class="navbar-end"> <a class="navbar-item" href="index.php">Home</a> <a class="navbar-item">About</a>
+				<div class="navbar-item">
+					<?php
                     if(!isset($_SESSION["loggedIn"])) {
                         echo('
                         <div class="buttons">
@@ -78,26 +68,22 @@
                         </div>
                         ');
                     }
-                ?>
-            </div>
-        </div>
-    </div>
-</nav>
-
-<div class="modal" id="login-modal">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <header class="modal-card-head">
-        <p class="modal-card-title">Log In</p>
-    </header>
-    <section class="modal-card-body">
-    <form class="field" method="POST" autocomplete="off">
-        <span id="login-error" class="has-text-danger"></span>
-        <input class="input is-rounded mb-4 mt-4" type="text" name="uname" placeholder="Username">
-        <input class="input is-rounded mb-4 mt-4" type="password" name="upass" placeholder="Password">
-        <input class="button is-success mt-4" type="submit" value="Log In" id="login-submit">  
-    </form>
-    </section>
-  </div>
-  <button class="modal-close is-large" aria-label="close"></button>
-</div>
+                ?> </div>
+			</div>
+		</div>
+	</nav>
+	<div class="modal" id="login-modal">
+		<div class="modal-background"></div>
+		<div class="modal-content">
+			<header class="modal-card-head">
+				<p class="modal-card-title">Log In</p>
+			</header>
+			<section class="modal-card-body">
+				<form class="field" method="POST" autocomplete="off"> <span id="login-error" class="has-text-danger"></span>
+					<input class="input is-rounded mb-4 mt-4" type="text" name="uname" placeholder="Username">
+					<input class="input is-rounded mb-4 mt-4" type="password" name="upass" placeholder="Password">
+					<input class="button is-success mt-4" type="submit" value="Log In" id="login-submit"> </form>
+			</section>
+		</div>
+		<button class="modal-close is-large" aria-label="close"></button>
+	</div>
