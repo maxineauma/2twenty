@@ -1,6 +1,7 @@
 <?php
 
     include("src/login.php");
+    include("src/verify_install.php");
     session_start();
     
     // if logging in:

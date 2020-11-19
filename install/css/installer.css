@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Open+Sans&display=swap');
+html, body {
+    width:100vw;
+    height:100vh;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+}
+body {
+    background-color:#524A5A;
+}
+
+.container {
+    position:absolute;
+    left:50vw;
+    top:50vh;
+    background-color:#FFF;
+    color:#333;
+    border:5px solid grey;
+    overflow:scroll;
+}
+.c-inner {
+    padding:25px;
+}
+
+.header { font-family: 'Lora', serif; }
+.regular { font-family: 'Open Sans', sans-serif; }
+
+input[type='text'], input[type='password'] {
+    display:block;
+    padding:5px;
+    width:50%;
+    margin-bottom:15px;
+}
+input[type='submit'] {
+    padding:15px;
+    width:50%;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .container {
+        width:90vw;
+        height:90vh;
+        margin-left:-45vw;
+        margin-top:-45vh;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For mobile phones: */
+    .container {
+        width:60vw;
+        height:60vh;
+        margin-left:-30vw;
+        margin-top:-30vh;
+    }
+}

@@ -1,0 +1,77 @@
+<?php 
+
+    $db_ho = $_POST['sql_hostname'];
+    $db_us = $_POST['sql_username'];
+    $db_pw = $_POST['sql_password'];
+
+    $us = $_POST['username'];
+    $pw = $_POST['password'];
+
+    if(empty($db_ho)) echo("Error. Please enter a valid hostname.<br/>");
+    if(empty($db_us) || empty($db_pw)) echo("Error. Please enter a SQL username and/or password.<br/>");
+    if(empty($us) || empty($pw)) echo("Error. Please enter a username and/or password.<br/>");
+
+    $conn = new mysqli($db_ho, $db_us, $db_pw);
+    if($conn -> connect_error) die("<br/>Failed to connect to SQL server.");
+    else {
+
+        // Database setup:
+        $sql = "CREATE DATABASE IF NOT EXISTS store;";
+        $db_query = $conn->prepare($sql);
+        $db_query->execute();
+        echo("<b>Created database <i>store</i>...</b><br/>");
+
+        // Table setup:
+        // featured:
+        $sql = "CREATE TABLE IF NOT EXISTS store.featured";
+        $sql .= "(id INT(255) NOT NULL);";
+        $tbl_query = $conn->prepare($sql);
+        $tbl_query->execute(); 
+        echo("<b>Created table <i>featured</i>...</b><br/>");
+
+        // user:
+        $sql = "CREATE TABLE IF NOT EXISTS store.user";
+        $sql .= "   (user TEXT NOT NULL,";
+        $sql .= "    pass VARCHAR(255) NOT NULL,";
+        $sql .= "    mod_priv TINYINT(1) NOT NULL,";
+        $sql .= "    admin_priv TINYINT(1) NOT NULL);";
+        $tbl_query = $conn->prepare($sql);
+        $tbl_query->execute(); 
+        echo("<b>Created table <i>user</i>...</b><br/>");
+
+        // items_for_sale:
+        $sql = "CREATE TABLE IF NOT EXISTS store.items_for_sale";
+        $sql .= "   (id INT(255) NOT NULL AUTO_INCREMENT,";
+        $sql .= "    title TEXT NULL, image_url TEXT NULL,";
+        $sql .= "    tags TEXT NULL, description TEXT NULL,";
+        $sql .= "    seller TEXT NULL, price DOUBLE NULL,";
+        $sql .= "    PRIMARY KEY (id) );";
+        $tbl_query = $conn->prepare($sql);
+        $tbl_query->execute();
+        echo("<b>Created table <i>items_for_sale</i>...</b><br/>");
+
+        // Records setup:
+        // admin account:
+        $sql = "INSERT INTO store.user";
+        $sql .= " VALUES('".$us."', md5('".$pw."'), 1, 1);";
+        $rec_query = $conn->prepare($sql);
+        $rec_query->execute();
+        echo("<b>Created administrator <i>".$us."</i>...</b><br/>");
+
+        // Configuration setup:
+        $fh = fopen("../../src/db_connect.php", 'w') or die("Unable to create configuration file.<br/>");
+        $config = '<?php '; 
+        $config .= '$server = "'.$db_ho.'";';
+        $config .= '$user = "'.$db_us.'";';
+        $config .= '$password = "'.$db_pw.'";';
+        $config .= '$db = "store";';
+        $config .= '$conn = new mysqli($server, $user, $password, $db);';
+        $config .= 'if($conn -> connect_error) die("Failed to connect."); ?>';
+        fwrite($fh, $config);
+        fclose($fh);
+
+        echo("Installation over. Please delete the <code>/install</code> directory.");
+
+    }
+
+?>
