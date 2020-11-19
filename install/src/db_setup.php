@@ -31,7 +31,7 @@
 
         // Table: featured
         $sql = "CREATE TABLE IF NOT EXISTS store.featured";
-        $sql .= "(id INT(255) NOT NULL);";
+        $sql .= "   (id INT(255) NOT NULL);";
 
         $tbl_query = $conn->prepare($sql);
         $tbl_query->execute() or die("<br/>Failed to create table <i>featured</i>."); 
@@ -42,7 +42,7 @@
 
         // Table: user
         $sql = "CREATE TABLE IF NOT EXISTS store.user";
-        $sql .= "    (id INT(255) NOT NULL AUTO_INCREMENT,";
+        $sql .= "   (id INT(255) NOT NULL AUTO_INCREMENT,";
         $sql .= "    user TEXT NOT NULL,";
         $sql .= "    pass VARCHAR(255) NOT NULL,";
         $sql .= "    mod_priv TINYINT(1) NOT NULL,";
@@ -73,7 +73,7 @@
 
         // Record: admin account
         $sql = "REPLACE INTO store.user(user, pass, mod_priv, admin_priv)";
-        $sql .= " VALUES(?, md5(?), 1, 1);";
+        $sql .= "   VALUES(?, md5(?), 1, 1);";
 
         $rec_query = $conn->prepare($sql);
         $rec_query->bind_param('ss', $u, $p); 
@@ -86,8 +86,8 @@
 
         // Record: dummy item
         $sql = "REPLACE INTO store.items_for_sale(title, image_url, tags, description, seller, price)";
-        $sql .= " VALUES('Sample Shoes', 'https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-2_large.png?format=jpg&quality=90&v=1530129318',";
-        $sql .= "        'clothing, shoes', 'Sample shoes.', 'sampleShop', 59.99);";
+        $sql .= "   VALUES('Sample Shoes', 'https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-2_large.png?format=jpg&quality=90&v=1530129318',";
+        $sql .= "          'clothing, shoes', 'Sample shoes.', 'sampleShop', 59.99);";
 
         $rec_query = $conn->prepare($sql);
         $rec_query->execute() or die("<br/>Failed to create record in <i>items_for_sale</i>.");
