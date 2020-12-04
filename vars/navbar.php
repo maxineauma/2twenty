@@ -1,71 +1,79 @@
 <?php
+include ("src/login.php");
+include ("src/user_lookup.php");
+include ("src/verify_install.php");
+session_start();
 
-    include("src/login.php");
-    include("src/user_lookup.php");
-    include("src/verify_install.php");
-    session_start();
-    
-    // if logging in:
-    if(isset($_POST["uname"]) && isset($_POST["upass"])) {
-        if(handle_login($_POST["uname"], $_POST["upass"])) {
-            
-            // success
-            $_SESSION["username"] = $_POST["uname"];
-            $_SESSION["loggedIn"] = 1;
+// if logging in:
+if (isset($_POST["uname"]) && isset($_POST["upass"]))
+{
+    if (handle_login($_POST["uname"], $_POST["upass"]))
+    {
 
-            echo('
+        // success
+        $_SESSION["username"] = $_POST["uname"];
+        $_SESSION["loggedIn"] = 1;
+
+        echo ('
             <div class="notification is-success floating" id="good-login">
                 <button class="delete"></button>
                 Successful login. Welcome back!
             </div>
         ');
 
-        } else {
+    }
+    else
+    {
 
-            // failure
-            echo('
+        // failure
+        echo ('
                 <div class="notification is-danger floating" id="bad-login">
                     <button class="delete"></button>
                     Bad login. Please try again.
                 </div>
             ');
 
-        }
     }
+}
 
-    // if logging in:
-    if(isset($_POST["uname_r"]) && isset($_POST["upass_r"])) {
-        if(handle_registration($_POST["uname_r"], $_POST["upass_r"])) {
-            
-            // success
-            echo('
+// if logging in:
+if (isset($_POST["uname_r"]) && isset($_POST["upass_r"]))
+{
+    if (handle_registration($_POST["uname_r"], $_POST["upass_r"]))
+    {
+
+        // success
+        echo ('
             <div class="notification is-success floating" id="good-login">
                 <button class="delete"></button>
                 Successful registration. Thank you!
             </div>
         ');
 
-        } else {
+    }
+    else
+    {
 
-            // failure
-            echo('
+        // failure
+        echo ('
                 <div class="notification is-danger floating" id="bad-login">
                     <button class="delete"></button>
                     Bad registration. Please try again.
                 </div>
             ');
 
-        }
     }
+}
 
-    // if logging out:
-    if(isset($_POST["logout"])) {
+// if logging out:
+if (isset($_POST["logout"]))
+{
 
-        // get rid of all SESSION variables
-        $_SESSION = array();
-        session_destroy();
+    // get rid of all SESSION variables
+    $_SESSION = array();
+    session_destroy();
 
-    }
+}
 
 ?>
 	<nav class="navbar is-white" role="navigation" aria-label="main navigation">
@@ -75,27 +83,30 @@
 		</div>
 		<div class="navbar-menu">
 			<div class="navbar-end"> <a class="navbar-item" href="index.php">Home</a> <a class="navbar-item">About</a>
-                <?php if(isset($_SESSION["loggedIn"])) echo('<a class="navbar-item" href="user.php?id='.getUserId($_SESSION["username"]).'">My Page</a>'); ?>
+                <?php if (isset($_SESSION["loggedIn"])) echo ('<a class="navbar-item" href="user.php?id=' . getUserId($_SESSION["username"]) . '">My Page</a>'); ?>
 				<div class="navbar-item">
 					<?php
-                    if(!isset($_SESSION["loggedIn"])) {
-                        echo('
+if (!isset($_SESSION["loggedIn"]))
+{
+    echo ('
                         <div class="buttons">
                             <a class="button is-primary is-rounded is-outlined" id="register"><b>Sign up</b></a>
                             <a class="button is-danger is-rounded is-outlined" id="login">Log in</a>
                         </div>
                         ');
-                    } else {
-                        echo('
-                        <div class="navbar-item">Welcome back, <strong class="ml-1">'.$_SESSION["username"].'</strong>!</div>
+}
+else
+{
+    echo ('
+                        <div class="navbar-item">Welcome back, <strong class="ml-1">' . $_SESSION["username"] . '</strong>!</div>
                         <div class="buttons">
                             <form class="field" method="POST" action="index.php">
                                 <input type="submit" name="logout" class="button is-danger is-rounded is-outlined" value="Logout">
                             </form>
                         </div>
                         ');
-                    }
-                ?> </div>
+}
+?> </div>
                             
                 <div class="navbar-item">
                     <div class="dropdown" id="cart">

@@ -1,5 +1,4 @@
 <?php
-
 function handle_login($uname, $pass)
 {
     include ("db_connect.php");
@@ -61,7 +60,7 @@ function handle_registration($uname, $pass)
     if ($result->num_rows > 0)
     {
         return 0; // username taken;
-
+        
     }
     else
     {
@@ -80,6 +79,5 @@ function handle_registration($uname, $pass)
     }
 
 }
-
 
 ?>

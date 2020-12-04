@@ -1,5 +1,4 @@
 <?php
-
 $db_ho = $_POST['sql_hostname'];
 $db_us = $_POST['sql_username'];
 $db_pw = $_POST['sql_password'];
@@ -12,7 +11,7 @@ if (empty($db_us)) die("Error. Please enter a SQL username.<br/>");
 if (empty($us) || empty($pw)) die("Error. Please enter a username and/or password.<br/>");
 
 $conn = new mysqli($db_ho, $db_us, $db_pw);
-if ($conn->connect_error) die("<br/>".$conn->connect_error);
+if ($conn->connect_error) die("<br/>" . $conn->connect_error);
 else
 {
 

@@ -1,6 +1,6 @@
 <?php
-
-function getUserId($uname) {
+function getUserId($uname)
+{
 
     include ("db_connect.php");
 
@@ -12,15 +12,19 @@ function getUserId($uname) {
     $query->execute();
     $result = $query->get_result();
 
-    if($result->num_rows > 0) {
-        return $result->fetch_array()[0];
-    } else {
+    if ($result->num_rows > 0)
+    {
+        return $result->fetch_array() [0];
+    }
+    else
+    {
         return "Unknown";
     }
 
 }
 
-function getUserName($id) {
+function getUserName($id)
+{
 
     include ("db_connect.php");
 
@@ -32,15 +36,19 @@ function getUserName($id) {
     $query->execute();
     $result = $query->get_result();
 
-    if($result->num_rows > 0) {
-        return $result->fetch_array()[0];
-    } else {
+    if ($result->num_rows > 0)
+    {
+        return $result->fetch_array() [0];
+    }
+    else
+    {
         return "Unknown User";
     }
 
 }
 
-function getUserSelling($uname) {
+function getUserSelling($uname)
+{
 
     include ("db_connect.php");
 
