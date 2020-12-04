@@ -5,10 +5,11 @@
         include("vars/navbar.php");
         include("src/search.php");
 
-        if($_GET['desc']) {
+        if(isset($_GET['desc'])) {
             $results = (search_store($_GET['desc']));
         } else {
-            header("Location: index.php");
+            $_GET['desc'] = 'nothing';
+            $results = (search_store($_GET['desc']));
         }
     ?>
 
@@ -51,7 +52,7 @@
                                     ');
                 
                                                         foreach($tags as &$tag) {
-                                                            echo(' <a href="search.php?desc='.$tag.'"><div class="tag is-danger">'.$tag.'</div></a> ');
+                                                            echo(' <a href="search.php?desc='.$tag.'"><span class="tag is-danger">'.$tag.'</span></a> ');
                                                         }
 
                                     echo('

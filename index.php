@@ -20,11 +20,14 @@
                         </h2>
 					<form class="field" action="search.php" method="GET" autocomplete="off">
 						<div class="control">
-							<input class="input is-rounded" type="text" name="desc" placeholder="Search for sellers and items"> </div>
+							<input class="input is-rounded" type="text" name="desc" placeholder="Search for sellers and items"> 
+                        </div>
 					</form>
-					<button class="button mt-4 is-rounded is-primary is-outlined is-inverted" id="more"> <span class="icon">
+					<button class="button mt-4 is-rounded is-primary is-outlined is-inverted" id="more"> 
+                        <span class="icon">
                             <i class="fas fa-arrow-down"></i>
-                        </span> <span>See More</span> </button>
+                        </span> <span>See More</span> 
+                    </button>
 				</div>
 			</div>
 		</section>

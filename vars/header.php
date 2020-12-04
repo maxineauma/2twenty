@@ -17,6 +17,7 @@
 
 		$("#login").click(function() { $("#login-modal").toggleClass("is-active"); });
 		$("#register").click(function() { $("#register-modal").toggleClass("is-active"); });
+		$("#cart").click(function() { $("#cart").toggleClass("is-active"); });
 
 		$("#login-modal > .modal-close").click(function() { $("#login-modal").toggleClass("is-active"); });
 		$("#register-modal > .modal-close").click(function() { $("#register-modal").toggleClass("is-active"); });
@@ -32,6 +33,10 @@
 			}, 300);
 		});
 	});
+
+	if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
 
 	</script>
 </head>

@@ -96,6 +96,23 @@
                         ');
                     }
                 ?> </div>
+                            
+                <div class="navbar-item">
+                    <div class="dropdown" id="cart">
+                        <div class="dropdown-trigger">
+                            <button class="button">
+                                <span class="icon is-small"><i class="fas fa-shopping-cart" aria-hidden="true"></i></span>
+                                <span>My Cart</span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-content">
+                               Empty.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 			</div>
 		</div>
 	</nav>
