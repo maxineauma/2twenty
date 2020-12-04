@@ -1,6 +1,7 @@
 <?php
 
     include("src/login.php");
+    include("src/user_lookup.php");
     include("src/verify_install.php");
     session_start();
     
@@ -32,6 +33,31 @@
         }
     }
 
+    // if logging in:
+    if(isset($_POST["uname_r"]) && isset($_POST["upass_r"])) {
+        if(handle_registration($_POST["uname_r"], $_POST["upass_r"])) {
+            
+            // success
+            echo('
+            <div class="notification is-success floating" id="good-login">
+                <button class="delete"></button>
+                Successful registration. Thank you!
+            </div>
+        ');
+
+        } else {
+
+            // failure
+            echo('
+                <div class="notification is-danger floating" id="bad-login">
+                    <button class="delete"></button>
+                    Bad registration. Please try again.
+                </div>
+            ');
+
+        }
+    }
+
     // if logging out:
     if(isset($_POST["logout"])) {
 
@@ -49,6 +75,7 @@
 		</div>
 		<div class="navbar-menu">
 			<div class="navbar-end"> <a class="navbar-item" href="index.php">Home</a> <a class="navbar-item">About</a>
+                <?php if(isset($_SESSION["loggedIn"])) echo('<a class="navbar-item" href="user.php?id='.getUserId($_SESSION["username"]).'">My Page</a>'); ?>
 				<div class="navbar-item">
 					<?php
                     if(!isset($_SESSION["loggedIn"])) {
@@ -72,6 +99,8 @@
 			</div>
 		</div>
 	</nav>
+
+    <!-- Login form -->
 	<div class="modal" id="login-modal">
 		<div class="modal-background"></div>
 		<div class="modal-content">
@@ -79,11 +108,32 @@
 				<p class="modal-card-title">Log In</p>
 			</header>
 			<section class="modal-card-body">
-				<form class="field" method="POST" autocomplete="off"> <span id="login-error" class="has-text-danger"></span>
+				<form class="field" method="POST" autocomplete="off">
 					<input class="input is-rounded mb-4 mt-4" type="text" name="uname" placeholder="Username">
 					<input class="input is-rounded mb-4 mt-4" type="password" name="upass" placeholder="Password">
-					<input class="button is-success mt-4" type="submit" value="Log In" id="login-submit"> </form>
+					<input class="button is-danger mt-4" type="submit" value="Log In" id="login-submit"> 
+                </form>
 			</section>
 		</div>
 		<button class="modal-close is-large" aria-label="close"></button>
 	</div>
+    <!-- End of Login -->
+
+    <!-- Register form -->
+    <div class="modal" id="register-modal">
+		<div class="modal-background"></div>
+		<div class="modal-content">
+			<header class="modal-card-head">
+				<p class="modal-card-title">Sign Up</p>
+			</header>
+			<section class="modal-card-body">
+				<form class="field" method="POST" autocomplete="off">
+					<input class="input is-rounded mb-4 mt-4" type="text" name="uname_r" placeholder="Username">
+					<input class="input is-rounded mb-4 mt-4" type="password" name="upass_r" placeholder="Password">
+					<input class="button is-primary mt-4" type="submit" value="Sign Up" id="login-submit"> 
+                </form>
+			</section>
+		</div>
+		<button class="modal-close is-large" aria-label="close"></button>
+	</div>
+    <!-- End of Register -->
