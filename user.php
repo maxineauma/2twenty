@@ -43,15 +43,15 @@ if ($items_sale)
                                         <div class="column is-full-mobile is-half">
                                             <div class="box">
                                                 <article class="media">
-                                                    <div class="media-left">
-                                                        <figure class="image is-64x64">
+                                                    <div class="media-left is-hidden-mobile">
+                                                        <figure class="image is-128x128">
                                                             <img src="' . $image_url . '" alt="' . $title . '">
                                                         </figure>
                                                     </div>
                                                     <div class="media-content">
                                                         <div class="content">
                                                             <p>
-                                                                <strong>@' . $seller . '</strong> is selling <strong>' . $title . '</strong> for <span class="tag is-success">$' . $price . '</span>
+                                                                <strong>' . $title . '</strong> for <span class="tag is-success">$' . $price . '</span>
                                                                 <br/>
                                                                 <div class="notification is-light">' . $desc . '</div>
                                                                 
