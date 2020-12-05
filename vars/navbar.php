@@ -1,6 +1,7 @@
 <?php
 include ("src/login.php");
 include ("src/user_lookup.php");
+include ("src/display_items.php");
 include ("src/verify_install.php");
 session_start();
 
@@ -36,7 +37,7 @@ if (isset($_POST["uname"]) && isset($_POST["upass"]))
     }
 }
 
-// if logging in:
+// if registering:
 if (isset($_POST["uname_r"]) && isset($_POST["upass_r"]))
 {
     if (handle_registration($_POST["uname_r"], $_POST["upass_r"]))
@@ -78,7 +79,7 @@ if (isset($_POST["logout"]))
 ?>
 	<nav class="navbar is-white" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
-			<div class="navbar-item"> <a href='index.php'><span class='twenty-title'>2Twenty</span></a> </div>
+            <?php include ("vars/cart.php"); ?>
 			<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"> <span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>
 		</div>
 		<div class="navbar-menu">
@@ -107,22 +108,6 @@ else
                         ');
 }
 ?> </div>
-                            
-                <div class="navbar-item">
-                    <div class="dropdown" id="cart">
-                        <div class="dropdown-trigger">
-                            <button class="button">
-                                <span class="icon is-small"><i class="fas fa-shopping-cart" aria-hidden="true"></i></span>
-                                <span>My Cart</span>
-                            </button>
-                        </div>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-content">
-                               Empty.
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 			</div>
 		</div>
@@ -139,7 +124,7 @@ else
 				<form class="field" method="POST" autocomplete="off">
 					<input class="input is-rounded mb-4 mt-4" type="text" name="uname" placeholder="Username">
 					<input class="input is-rounded mb-4 mt-4" type="password" name="upass" placeholder="Password">
-					<input class="button is-danger mt-4" type="submit" value="Log In" id="login-submit"> 
+					<input class="button is-danger mt-4" type="submit" value="Log In"> 
                 </form>
 			</section>
 		</div>
@@ -158,7 +143,7 @@ else
 				<form class="field" method="POST" autocomplete="off">
 					<input class="input is-rounded mb-4 mt-4" type="text" name="uname_r" placeholder="Username">
 					<input class="input is-rounded mb-4 mt-4" type="password" name="upass_r" placeholder="Password">
-					<input class="button is-primary mt-4" type="submit" value="Sign Up" id="login-submit"> 
+					<input class="button is-primary mt-4" type="submit" value="Sign Up"> 
                 </form>
 			</section>
 		</div>
