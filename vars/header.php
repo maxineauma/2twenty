@@ -55,6 +55,7 @@
 			Cookies.set("cart", Cookies.get("cart") + " " + item_id, {expires:1}); 
 		$(targetButton).text("Added to cart!"); 
 		$(targetButton).prop("disabled", true);
+		location.reload();
 	}
 
 	if ( window.history.replaceState ) {

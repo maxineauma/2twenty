@@ -30,6 +30,7 @@ else
 
     echo ("
                             <span class='dropdown-item'><!--empty--></span>
+                            <a class='dropdown-item has-text-white has-background-info' onClick='Cookies.remove(\"cart\"); location.reload();'>Clear Cart</a>
                             <a class='dropdown-item has-text-white has-background-danger'>Check Out</a>
                         ");
 
