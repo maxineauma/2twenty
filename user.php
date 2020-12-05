@@ -21,7 +21,14 @@ $items_sale = (getUserSelling(getUserName($_GET["id"])));
                         </div>
                         <div class="media-content">
                             <p class="title is-4"><?php echo getUserName($_GET["id"]) ?>'s User Page</p>
-                            <p class="subtitle is-6"><span class="tag is-success">Registered 2Twenty User</span> <span class="tag is-danger">ID <?php echo getUserId(getUserName($_GET["id"])); ?></span></p>
+                            <p class="subtitle is-6">
+                                <?php 
+                                    if(getUserPrivs($_GET["id"], "adm")) echo("<span class='tag is-danger'>Administrator</span> ");
+                                    if(getUserPrivs($_GET["id"], "mod")) echo("<span class='tag is-warning'>Moderator</span> ");
+                                    if(!getUserPrivs($_GET["id"], "mod") && !getUserPrivs($_GET["id"], "adm")) echo("<span class='tag is-success'>Regular User</span> ");
+                                    if(isset($_SESSION["loggedIn"]) && $_SESSION["username"] == getUserName($_GET["id"])) echo("<span class='tag is-info'>You</span>");
+                                ?>
+                            </p>
                         </div>
                         </div>
 

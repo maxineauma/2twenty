@@ -59,12 +59,30 @@ function getUserSelling($uname)
     $u = $uname;
     $query->execute();
 
-    $res = $query->get_result();
+    $result = $query->get_result();
 
-    while ($row = $res->fetch_all())
+    while ($row = $result->fetch_all())
     {
         return $row;
     }
+
+}
+
+function getUserPrivs($id,$priv) {
+
+    include ("db_connect.php");
+
+    if($priv == "mod") $sql = "SELECT mod_priv FROM `user` WHERE id = ?;";
+    if($priv == "adm") $sql = "SELECT admin_priv FROM `user` WHERE id = ?;";
+    $query = $conn->prepare($sql);
+    $query->bind_param('i', $i);
+
+    $i = $id;
+    $query->execute();
+    $result = $query->get_result();
+    
+    $priv = $result->fetch_array()[0];
+    return $priv;
 
 }
 
