@@ -3,9 +3,16 @@
 <?php
 include ("vars/header.php");
 include ("vars/navbar.php");
-include ("src/search.php");
 
-$items_sale = (getUserSelling(getUserName($_GET["id"])));
+if (isset($_GET['id']))
+{
+    $items_sale = (getUserSelling(getUserName($_GET["id"])));
+}
+else
+{
+    $_GET['id'] = 0;
+    $items_sale = (getUserSelling(getUserName($_GET["id"])));
+}
 ?>
 
 	<body>

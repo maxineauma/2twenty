@@ -81,8 +81,14 @@ function getUserPrivs($id,$priv) {
     $query->execute();
     $result = $query->get_result();
     
-    $priv = $result->fetch_array()[0];
-    return $priv;
+    if ($result->num_rows > 0)
+    {
+        $priv = $result->fetch_array()[0];
+        return $priv;
+    }
+    else {
+        return 0;
+    }
 
 }
 
