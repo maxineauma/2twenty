@@ -2,7 +2,7 @@
     <div class="dropdown" id="cart">
         <div class="dropdown-trigger">
             <button class="button">
-                <span class="icon is-small"><i class="fas fa-shopping-cart" aria-hidden="true"></i></span>
+                <span class="icon is-small"><i class="fas fa-shopping-basket" aria-hidden="true"></i></span>
                 <span>My Cart</span>
             </button>
         </div>

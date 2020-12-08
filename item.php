@@ -4,16 +4,8 @@
 include ("vars/header.php");
 include ("vars/navbar.php");
 
-if (isset($_GET['id']))
-{
-    $item = ((getItemById($_GET["id"])));
-}
-else
-{
-    $_GET['id'] = 0;
-    $item = ((getItemById($_GET["id"])));
-}
-
+$_GET['id'] = (isset($_GET['id']) ? $_GET['id'] : 0);
+$item = ((getItemById($_GET["id"])));
 ?>
 
 	<body>
@@ -21,7 +13,6 @@ else
 			<div class="container">
                 <div class="columns">
                 <?php
-
 $id = $item[0];
 $title = $item[1];
 $image_url = $item[2];
@@ -45,12 +36,12 @@ echo ('
                                         <div class="media">
                                             <div class="media-content">
                                                 <p class="title is-4">' . $title . ' <span class="tag is-success">$' . $price . '</span></p>
-                                                <p class="subtitle is-6">Sold by <a href="user.php?id=' . getUserId($seller) . '">@' . $seller . '</a></p>
+                                                <p class="subtitle is-6">Sold by <a href="user.php?id=' . getUserId($seller) . '">' . $seller . '</a></p>
                                                 <strong>Associated Tags</strong>:');
 
 foreach ($tags as & $tag)
 {
-    echo (' <a href="search.php?desc=' . $tag . '"><span class="tag is-danger">' . $tag . '</span></a> ');
+    echo (' <a href="search.php?desc=' . $tag . '"><span class="tag is-danger"><span class="icon"><i class="fas fa-tag"></i></span>&nbsp;' . $tag . '</span></a> ');
 }
 echo ('
                                             <br/><br/>

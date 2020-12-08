@@ -19,8 +19,11 @@ $featured = (show_featured());
                             Find things you love. Become an independent seller. All right here.
                         </h2>
 					<form class="field" action="search.php" method="GET" autocomplete="off">
-						<div class="control">
+						<div class="control has-icons-left">
 							<input class="input is-rounded" type="text" name="desc" placeholder="Search for sellers and items"> 
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-search"></i>
+                            </span>
                         </div>
 					</form>
 					<button class="button mt-4 is-rounded is-primary is-outlined is-inverted" id="more"> 
@@ -54,7 +57,7 @@ foreach ($featured as & $item)
                                         <div class="media">
                                             <div class="media-content">
                                                 <p class="title is-4"><a href="item.php?id=' . $id . '">' . $title . '</a></p>
-                                                <p class="subtitle is-6">by <a href="user.php?id=' . getUserId($seller) . '">@' . $seller . '</a></p>
+                                                <p class="subtitle is-6">by <a href="user.php?id=' . getUserId($seller) . '">' . $seller . '</a></p>
                                             </div>
                                         </div>
                                     </div>

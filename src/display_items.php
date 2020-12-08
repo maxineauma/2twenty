@@ -25,7 +25,7 @@ function display_items($results)
                                                     <div class="media-content">
                                                         <div class="content">
                                                             <p>
-                                                                <strong><a href="user.php?id=' . getUserId($seller) . '">@' . $seller . '</a></strong> is selling <strong><a href="item.php?id=' . $id . '">' . $title . '</a></strong> for <span class="tag is-success">$' . $price . '</span>
+                                                                <strong><a href="user.php?id=' . getUserId($seller) . '">' . $seller . '</a></strong> is selling <strong><a href="item.php?id=' . $id . '">' . $title . '</a></strong> for <span class="tag is-success">$' . $price . '</span>
                                                                 <br/>
                                                                 <div class="notification is-light">' . $desc . '<br/>
                                                                 
@@ -33,7 +33,7 @@ function display_items($results)
 
             foreach ($tags as & $tag)
             {
-                echo (' <a href="search.php?desc=' . $tag . '"><span class="tag is-danger">' . $tag . '</span></a> ');
+                echo (' <a href="search.php?desc=' . $tag . '"><span class="tag is-danger"><span class="icon"><i class="fas fa-tag"></i></span>&nbsp;' . $tag . '</span></a> ');
             }
 
             echo ('
@@ -54,7 +54,7 @@ function display_items($results)
     }
     else
     {
-        echo ('<p class=subtitle>No items to display.</p>');
+        echo ('<p class="subtitle m-4">No items to display.</p>');
     }
 }
 
