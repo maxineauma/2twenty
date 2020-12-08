@@ -13,10 +13,10 @@
     // grey out buttons for items in cart already
     function disableButtons() {
         if(Cookies.get("cart") !== undefined) {
-            var cart = Cookies.get("cart").split(" ");
+            var cart = Cookies.get("cart").split(",");
             for(var x = 0; x<cart.length; x++) {
-                $("#button-cart-"+cart[x]).text("Added to cart!");
-                $("#button-cart-"+cart[x]).prop("disabled", true);
+                $("#button-cart-"+cart[x]).html('<span class="icon is-small"><i class="fas fa-trash" aria-hidden="true"></i></span><span>Remove from cart</span>');
+                $("#button-cart-"+cart[x]).attr("onClick", "removeFromCart("+cart[x]+", this);");
             }
         }
     }
@@ -48,13 +48,29 @@
         disableButtons();
     });
 
+    function clearCart() {
+        Cookies.remove("cart");
+        location.reload();
+    }
+
+    function removeFromCart(item_id, targetButton) {
+        var cart = Cookies.get("cart").split(",");
+        if(cart.length == 2)
+            clearCart();
+        else
+            Cookies.set("cart", Cookies.get("cart").replace(item_id + ",", ""), {expires:1});
+            $(targetButton).html('<span class="icon is-small"><i class="fas fa-cart-plus" aria-hidden="true"></i></span><span>Add to cart cart</span>');
+        $(targetButton).attr("onClick", "addToCart("+item_id+", this);");
+        location.reload();
+    }
+
     function addToCart(item_id, targetButton) {
         if(Cookies.get("cart") == undefined) 
-            Cookies.set("cart", item_id, {expires:1});
+            Cookies.set("cart", item_id + ",", {expires:1});
         else 
-            Cookies.set("cart", Cookies.get("cart") + " " + item_id, {expires:1}); 
-        $(targetButton).text("Added to cart!"); 
-        $(targetButton).prop("disabled", true);
+            Cookies.set("cart", Cookies.get("cart") + item_id + ",", {expires:1}); 
+            $(targetButton).html('<span class="icon is-small"><i class="fas fa-trash" aria-hidden="true"></i></span><span>Remove from cart</span>');
+        $(targetButton).attr("onClick", "removeFromCart("+item_id+", "+targetButton+");");
         location.reload();
     }
 

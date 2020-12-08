@@ -162,7 +162,8 @@ display_items($items_sale);
                                     <input class="input mt-1" type="text" name="tags" placeholder="Tags">
                                     <input class="input mt-1" type="text" name="price" placeholder="Price">
                                     <textarea class="textarea mt-1" name="description" maxlength="1024" placeholder="Description"></textarea>
-                                    <input class="button is-primary mt-2" type="submit" value="Upload"> </div>
+                                    <input class="button is-primary mt-2" type="submit" value="Upload"> 
+                                </div>
                             </form>
                             <hr class="divider"/>
                             <div class="subtitle is-6 mt-4 mb-4">Change Profile Info</p>
@@ -174,7 +175,7 @@ echo $portrait;
                                     <textarea class="textarea mt-1" name="newInfo" maxlength="1024"><?php
 echo $info;
 ?></textarea>
-                                    <input class="button is-primary mt-2" type="submit" value="Change Profile Information">
+                                    <input class="button is-primary mt-2" type="submit" value="Edit Profile">
                                 </div>
                             </form>
                             <hr class="divider"/>
