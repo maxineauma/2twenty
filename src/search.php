@@ -45,4 +45,3 @@ function search_store($desc, $sort, $direction)
     }
 }
 ?>
-Download 
