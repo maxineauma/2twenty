@@ -1,2 +1,2 @@
 # 2twenty -- unofficially, shop-proj.
-Private repository for CS 220 final project.
+Smith College CS 220 (Advanced Programming) final project.
